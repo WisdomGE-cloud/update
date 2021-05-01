@@ -170,11 +170,11 @@ install_old_tcp(){
 #运行新tcp加速
 install_new_tcp(){
 	if [[ "${release}" == "centos" ]]; then
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 	elif [[ "${release}" == "debian" ]]; then
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 	fi
 }
 
