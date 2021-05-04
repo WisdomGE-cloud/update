@@ -305,6 +305,27 @@ nf(){
 	fi
 }
 
+#测速
+speed(){
+	if [[ "${release}" == "centos" ]]; then
+		wget -qO- git.io/superbench.sh | bash
+	elif [[ "${release}" == "ubuntu" ]]; then
+		wget -qO- git.io/superbench.sh | bash
+	elif [[ "${release}" == "debian" ]]; then
+		wget -qO- git.io/superbench.sh | bash
+	fi
+}
+
+#路由测试
+route(){
+	if [[ "${release}" == "centos" ]]; then
+		wget -qO- https://raw.githubusercontent.com/wn789/VPS-/master/autoBestTrace.sh | bash
+	elif [[ "${release}" == "ubuntu" ]]; then
+		wget -qO- https://raw.githubusercontent.com/wn789/VPS-/master/autoBestTrace.sh | bash
+	elif [[ "${release}" == "debian" ]]; then
+		wget -qO- https://raw.githubusercontent.com/wn789/VPS-/master/autoBestTrace.sh | bash
+	fi
+}
 
 #开始菜单
 start_menu(){
@@ -326,6 +347,8 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}14.${Font_color_suffix} 添加虚拟内存
  ${Green_font_prefix}15.${Font_color_suffix} DNS流媒体解锁服务
  ${Green_font_prefix}16.${Font_color_suffix} 流媒体解锁测试
+ ${Green_font_prefix}17.${Font_color_suffix} 测速
+ ${Green_font_prefix}18.${Font_color_suffix} 回程测试
 ————————————扶梯软件相关——————————————
  ${Green_font_prefix}21.${Font_color_suffix} 233boy一键脚本
  ${Green_font_prefix}22.${Font_color_suffix} soga安装
@@ -377,6 +400,12 @@ case "$num" in
 	;;
 	16)
 	nf
+	;;
+	17)
+	speed
+	;;
+	18)
+	route
 	;;
 	21)
 	233boy
