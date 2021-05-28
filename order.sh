@@ -69,10 +69,13 @@ install_ssh(){
 #安装statu
 install_statu(){
 	if [[ "${release}" == "centos" ]]; then
+	        dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 	elif [[ "${release}" == "ubuntu" ]]; then
+	        sudo dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 	elif [[ "${release}" == "debian" ]]; then
+	        dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 	fi
 	bash status.sh c
@@ -85,22 +88,16 @@ install_docker(){
 		curl -fsSL https://get.docker.com | bash -s docker
 		sh get-docker.sh
 		sudo systemctl start docker
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
 		sudo systemctl start docker
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		chmod +x /usr/local/bin/docker-compose
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get install sudo -y
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
 		sudo systemctl start docker
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		chmod +x /usr/local/bin/docker-compose
 	fi
 	start_menu
 }
@@ -127,6 +124,7 @@ install_docker_compose(){
 install_docker_statu(){
 	if [[ "${release}" == "centos" ]]; then
 		yum -y install sudo
+		dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
@@ -136,6 +134,7 @@ install_docker_statu(){
 		touch /root/docker-compose.yml
 	elif [[ "${release}" == "ubuntu" ]]; then
 		apt-get install sudo -y
+		dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
@@ -145,6 +144,7 @@ install_docker_statu(){
 		touch /root/docker-compose.yml
 	elif [[ "${release}" == "debian" ]]; then
 		apt-get install sudo -y
+		dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
