@@ -42,21 +42,21 @@ install_curl(){
 #安装ssh
 install_ssh(){
 	if [[ "${release}" == "centos" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
+		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/update/raw/main/authorized_keys
 		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
 		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
 		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
 		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 		service sshd restart
 	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
+		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/update/raw/main/authorized_keys
 		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
 		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
 		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
 		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 		service sshd restart
 	elif [[ "${release}" == "debian" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/Upgrade-command-pack/raw/master/authorized_keys
+		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/update/raw/main/authorized_keys
 		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
 		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
 		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
