@@ -327,6 +327,18 @@ route(){
 	fi
 }
 
+#warp网络增加
+warp(){
+	if [[ "${release}" == "centos" ]]; then
+		bash <(curl -fsSL git.io/warp.sh) menu
+	elif [[ "${release}" == "ubuntu" ]]; then
+		bash <(curl -fsSL git.io/warp.sh) menu
+	elif [[ "${release}" == "debian" ]]; then
+		bash <(curl -fsSL git.io/warp.sh) menu
+	fi
+}
+
+
 #开始菜单
 start_menu(){
 clear
@@ -349,6 +361,7 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}16.${Font_color_suffix} 流媒体解锁测试
  ${Green_font_prefix}17.${Font_color_suffix} 测速
  ${Green_font_prefix}18.${Font_color_suffix} 回程测试
+ ${Green_font_prefix}19.${Font_color_suffix} warp网络添加
 ————————————扶梯软件相关——————————————
  ${Green_font_prefix}21.${Font_color_suffix} 233boy一键脚本
  ${Green_font_prefix}22.${Font_color_suffix} soga安装
@@ -406,6 +419,9 @@ case "$num" in
 	;;
 	18)
 	route
+	;;
+	19)
+	warp
 	;;
 	21)
 	233boy
