@@ -156,6 +156,32 @@ install_docker_statu(){
 	start_menu
 }
 
+#编译安装wireguard
+install_wireguard(){
+	if [[ "${release}" == "centos" ]]; then
+		yum install -y libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
+		git clone https://git.zx2c4.com/WireGuard
+		cd WireGuard/src
+		make
+		make install
+		cd
+	elif [[ "${release}" == "ubuntu" ]]; then
+		apt-get install -y libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
+		git clone https://git.zx2c4.com/WireGuard
+		cd WireGuard/src
+		make
+		make install
+		cd
+	elif [[ "${release}" == "debian" ]]; then
+		apt-get install -y libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
+		git clone https://git.zx2c4.com/WireGuard
+		cd WireGuard/src
+		make
+		make install
+		cd
+	fi
+}
+
 #运行旧tcp加速
 install_old_tcp(){
 	if [[ "${release}" == "centos" ]]; then
@@ -352,6 +378,7 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}5.${Font_color_suffix}  安装docker
  ${Green_font_prefix}6.${Font_color_suffix}  安装docker-compose
  ${Green_font_prefix}7.${Font_color_suffix}  安装Statu配置&docker
+ ${Green_font_prefix}8.${Font_color_suffix}  编译安装WireGuard
 ————————————相关配置服务——————————————
  ${Green_font_prefix}11.${Font_color_suffix} 运行旧tcp加速
  ${Green_font_prefix}12.${Font_color_suffix} 运行新tcp加速
@@ -395,6 +422,9 @@ case "$num" in
 	;;
 	7)
 	install_docker_statu
+	;;
+	8)
+	install_wireguard
 	;;
 	11)
 	install_old_tcp
