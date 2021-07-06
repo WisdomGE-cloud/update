@@ -159,21 +159,21 @@ install_docker_statu(){
 #编译安装wireguard
 install_wireguard(){
 	if [[ "${release}" == "centos" ]]; then
-		yum install -y libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
+		yum install -y git libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
 		git clone https://git.zx2c4.com/WireGuard
 		cd WireGuard/src
 		make
 		make install
 		cd
 	elif [[ "${release}" == "ubuntu" ]]; then
-		apt-get install -y libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
+		apt-get install -y git libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
 		git clone https://git.zx2c4.com/WireGuard
 		cd WireGuard/src
 		make
 		make install
 		cd
 	elif [[ "${release}" == "debian" ]]; then
-		apt-get install -y libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
+		apt-get install -y git libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config
 		git clone https://git.zx2c4.com/WireGuard
 		cd WireGuard/src
 		make
