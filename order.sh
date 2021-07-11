@@ -105,15 +105,15 @@ install_docker(){
 #安装docker-compose
 install_docker_compose(){
 	if [[ "${release}" == "centos" ]]; then
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
 	elif [[ "${release}" == "ubuntu" ]]; then
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
 	elif [[ "${release}" == "debian" ]]; then
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
 	fi
@@ -129,7 +129,7 @@ install_docker_statu(){
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
 		sudo systemctl start docker
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
 	elif [[ "${release}" == "ubuntu" ]]; then
@@ -139,7 +139,7 @@ install_docker_statu(){
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
 		sudo systemctl start docker
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
 	elif [[ "${release}" == "debian" ]]; then
@@ -149,7 +149,7 @@ install_docker_statu(){
 		curl -fsSL get.docker.com -o get-docker.sh
 		sh get-docker.sh
 		sudo systemctl start docker
-		curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
 	fi
