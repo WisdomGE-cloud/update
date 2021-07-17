@@ -367,6 +367,16 @@ warp(){
 	fi
 }
 
+#安装ara2
+ara2(){
+	if [[ "${release}" == "centos" ]]; then
+		wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
+	elif [[ "${release}" == "ubuntu" ]]; then
+		wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
+	elif [[ "${release}" == "debian" ]]; then
+		wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
+	fi
+}
 
 #开始菜单
 start_menu(){
@@ -381,23 +391,25 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}5.${Font_color_suffix}  安装docker
  ${Green_font_prefix}6.${Font_color_suffix}  安装docker-compose
  ${Green_font_prefix}7.${Font_color_suffix}  安装Statu配置&docker
- ${Green_font_prefix}8.${Font_color_suffix}  编译安装WireGuard
 ————————————相关配置服务——————————————
  ${Green_font_prefix}11.${Font_color_suffix} 运行旧tcp加速
  ${Green_font_prefix}12.${Font_color_suffix} 运行新tcp加速
  ${Green_font_prefix}13.${Font_color_suffix} 运行iptable端口转发
  ${Green_font_prefix}14.${Font_color_suffix} 添加虚拟内存
- ${Green_font_prefix}15.${Font_color_suffix} DNS流媒体解锁服务
- ${Green_font_prefix}16.${Font_color_suffix} 流媒体解锁测试
- ${Green_font_prefix}17.${Font_color_suffix} 测速
- ${Green_font_prefix}18.${Font_color_suffix} 回程测试
- ${Green_font_prefix}19.${Font_color_suffix} warp网络添加
+ ${Green_font_prefix}15.${Font_color_suffix} 测速
+ ${Green_font_prefix}16.${Font_color_suffix} 回程测试
+ ${Green_font_prefix}17.${Font_color_suffix} 安装ara2
+————————————流媒体相关服务————————————
+ ${Green_font_prefix}81.${Font_color_suffix} DNS流媒体解锁服务
+ ${Green_font_prefix}82.${Font_color_suffix} 流媒体解锁测试
+ ${Green_font_prefix}83.${Font_color_suffix} 编译安装WireGuard
+ ${Green_font_prefix}84.${Font_color_suffix} warp网络添加
 ————————————扶梯软件相关——————————————
- ${Green_font_prefix}21.${Font_color_suffix} 233boy一键脚本
- ${Green_font_prefix}22.${Font_color_suffix} soga安装
- ${Green_font_prefix}23.${Font_color_suffix} v2board正式版更新
- ${Green_font_prefix}24.${Font_color_suffix} v2board测试版更新
- ${Green_font_prefix}25.${Font_color_suffix} sogaのdocker-compose更新
+ ${Green_font_prefix}91.${Font_color_suffix} 233boy一键脚本
+ ${Green_font_prefix}92.${Font_color_suffix} soga安装
+ ${Green_font_prefix}93.${Font_color_suffix} v2board正式版更新
+ ${Green_font_prefix}94.${Font_color_suffix} v2board测试版更新
+ ${Green_font_prefix}95.${Font_color_suffix} sogaのdocker-compose更新
 ————————————退出脚本——————————————————
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
 —————————————————————————————————————" && echo
@@ -426,9 +438,6 @@ case "$num" in
 	7)
 	install_docker_statu
 	;;
-	8)
-	install_wireguard
-	;;
 	11)
 	install_old_tcp
 	;;
@@ -442,33 +451,39 @@ case "$num" in
 	swap
 	;;
 	15)
-	dns
-	;;
-	16)
-	nf
-	;;
-	17)
 	speed
 	;;
-	18)
+	16)
 	route
 	;;
-	19)
+	17)
+	ara2
+	;;
+	81)
+	dns
+	;;
+	82)
+	nf
+	;;
+	83)
+	install_wireguard
+	;;
+	84)
 	warp
 	;;
-	21)
+	91)
 	233boy
 	;;
-	22)
+	92)
 	soga
 	;;
-	23)
+	93)
 	v2board
 	;;
-	24)
+	94)
 	v2board_dev
 	;;
-	25)
+	95)
 	soga_update
 	;;
 	0)
@@ -476,7 +491,7 @@ case "$num" in
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-25]"
+	echo -e "${Error}:请输入正确数字 [0-95]"
 	sleep 1s
 	start_menu
 	;;
