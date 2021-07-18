@@ -265,6 +265,20 @@ soga(){
 	fi
 }
 
+#soga节点对接
+XrayR(){
+	if [[ "${release}" == "centos" ]]; then
+	        timedatectl set-timezone "Asia/Shanghai"
+		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+	elif [[ "${release}" == "ubuntu" ]]; then
+	        timedatectl set-timezone "Asia/Shanghai"
+		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+	elif [[ "${release}" == "debian" ]]; then
+	        timedatectl set-timezone "Asia/Shanghai"
+		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+	fi
+}
+
 #v2board正式版更新
 v2board(){
 	if [[ "${release}" == "centos" ]]; then
@@ -405,11 +419,12 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}83.${Font_color_suffix} 编译安装WireGuard
  ${Green_font_prefix}84.${Font_color_suffix} warp网络添加
 ————————————扶梯软件相关——————————————
- ${Green_font_prefix}91.${Font_color_suffix} 233boy一键脚本
- ${Green_font_prefix}92.${Font_color_suffix} soga安装
- ${Green_font_prefix}93.${Font_color_suffix} v2board正式版更新
- ${Green_font_prefix}94.${Font_color_suffix} v2board测试版更新
+ ${Green_font_prefix}91.${Font_color_suffix} v2board正式版更新
+ ${Green_font_prefix}92.${Font_color_suffix} v2board测试版更新
+ ${Green_font_prefix}93.${Font_color_suffix} 233boy一键脚本
+ ${Green_font_prefix}94.${Font_color_suffix} soga后端安装
  ${Green_font_prefix}95.${Font_color_suffix} sogaのdocker-compose更新
+ ${Green_font_prefix}96.${Font_color_suffix} XrayR后端安装
 ————————————退出脚本——————————————————
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
 —————————————————————————————————————" && echo
@@ -472,26 +487,29 @@ case "$num" in
 	warp
 	;;
 	91)
-	233boy
-	;;
-	92)
-	soga
-	;;
-	93)
 	v2board
 	;;
-	94)
+	92)
 	v2board_dev
+	;;
+	93)
+	233boy
+	;;
+	94)
+	soga
 	;;
 	95)
 	soga_update
+	;;
+	96)
+	XrayR
 	;;
 	0)
 	exit 1
 	;;
 	*)
 	clear
-	echo -e "${Error}:请输入正确数字 [0-95]"
+	echo -e "${Error}:请输入正确数字 [0-96]"
 	sleep 1s
 	start_menu
 	;;
