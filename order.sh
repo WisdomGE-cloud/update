@@ -207,6 +207,20 @@ install_new_tcp(){
 	fi
 }
 
+#运行ovz_bbr
+ovz_bbr(){
+	if [[ "${release}" == "centos" ]]; then
+		wget https://github.com/tcp-nanqinlang/lkl-haproxy/releases/download/1.1.1/tcp_nanqinlang-haproxy-centos.sh
+		bash tcp_nanqinlang-haproxy-centos.sh
+	elif [[ "${release}" == "ubuntu" ]]; then
+	        wget https://github.com/tcp-nanqinlang/lkl-haproxy/releases/download/1.1.1/tcp_nanqinlang-haproxy-debian.sh
+		bash tcp_nanqinlang-haproxy-debian.sh
+	elif [[ "${release}" == "debian" ]]; then
+	        wget https://github.com/tcp-nanqinlang/lkl-haproxy/releases/download/1.1.1/tcp_nanqinlang-haproxy-debian.sh
+		bash tcp_nanqinlang-haproxy-debian.sh
+	fi
+}
+
 #运行iptable端口转发
 iptable(){
 	if [[ "${release}" == "centos" ]]; then
@@ -265,7 +279,7 @@ soga(){
 	fi
 }
 
-#soga节点对接
+#XrayR节点对接
 XrayR(){
 	if [[ "${release}" == "centos" ]]; then
 	        timedatectl set-timezone "Asia/Shanghai"
@@ -413,6 +427,7 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}15.${Font_color_suffix} 测速
  ${Green_font_prefix}16.${Font_color_suffix} 回程测试
  ${Green_font_prefix}17.${Font_color_suffix} 安装ara2
+ ${Green_font_prefix}18.${Font_color_suffix} OVZ开启bbr
 ————————————流媒体相关服务————————————
  ${Green_font_prefix}81.${Font_color_suffix} DNS流媒体解锁服务
  ${Green_font_prefix}82.${Font_color_suffix} 流媒体解锁测试
@@ -473,6 +488,9 @@ case "$num" in
 	;;
 	17)
 	ara2
+	;;
+	18)
+	ovz_bbr
 	;;
 	81)
 	dns
