@@ -259,7 +259,7 @@ xmrig_file(){
 	        
                 mkdir /root/xmrig
 	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json
-		echo -e "${Green}请输入猫池所需矿工名${Font}"
+		echo -e "${Green_font_prefix}请输入猫池所需矿工名{Font_color_suffix}"
                 read -p "请输入矿工名:" xmrigname
 	        sed -i "s/xxxxx/${xmrigname}/g" /root/xmrig/config.json
 	        start_menu
@@ -277,7 +277,7 @@ xmrig_remove(){
 
 #docker安装xmrig
 xmrig_docker(){
-	        echo -e "${Green}请输入cpu限制值${Font}"
+	        echo -e "${Green_font_prefix}请输入cpu限制值{Font_color_suffix}"
                 read -p "请输入cpu限制值:" cpusize
 		docker run --restart=always --network host -d -v /root/xmrig/config.json:/etc/xmrig/config.json -e CPU_USAGE=${cpusize} --name wisdom wisdomclouds/xmrig
 }
