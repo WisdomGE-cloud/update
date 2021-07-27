@@ -260,8 +260,8 @@ xmrig_file(){
                 mkdir /root/xmrig
 	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json
 		echo -e "${Green}请输入猫池所需矿工名${Font}"
-                read -p "请输入矿工名:" xmrig_name
-	        sed -i 's/xxxxx/${xmrig_name}/g' /root/xmrig/config.json
+                read -p "请输入矿工名:" xmrigname
+	        sed -i 's/xxxxx/${xmrigname}/g' /root/xmrig/config.json
 	        start_menu
 }
 
