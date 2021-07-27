@@ -41,23 +41,6 @@ install_curl(){
 
 #安装ssh
 install_ssh(){
-	if [[ "${release}" == "centos" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/update/raw/main/authorized_keys
-		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
-		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
-		sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
-		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-		service sshd restart
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/update/raw/main/authorized_keys
-		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
-		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
-		sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
-		sed -i 's/#PasswordAuthentication/PasswordAuthentication/g' /etc/ssh/sshd_config
-		sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-		service sshd restart
-	elif [[ "${release}" == "debian" ]]; then
 		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/update/raw/main/authorized_keys
 		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
 		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
@@ -71,13 +54,6 @@ install_ssh(){
 
 #安装statu
 install_statu(){
-	if [[ "${release}" == "centos" ]]; then
-	        dpkg-reconfigure dash
-		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
-	elif [[ "${release}" == "ubuntu" ]]; then
-	        sudo dpkg-reconfigure dash
-		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
-	elif [[ "${release}" == "debian" ]]; then
 	        dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
 	fi
@@ -107,15 +83,6 @@ install_docker(){
 
 #安装docker-compose
 install_docker_compose(){
-	if [[ "${release}" == "centos" ]]; then
-		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		chmod +x /usr/local/bin/docker-compose
-		touch /root/docker-compose.yml
-	elif [[ "${release}" == "ubuntu" ]]; then
-		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		chmod +x /usr/local/bin/docker-compose
-		touch /root/docker-compose.yml
-	elif [[ "${release}" == "debian" ]]; then
 		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
@@ -187,24 +154,12 @@ install_wireguard(){
 
 #运行旧tcp加速
 install_old_tcp(){
-	if [[ "${release}" == "centos" ]]; then
 		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-	elif [[ "${release}" == "debian" ]]; then
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-	fi
 }
 
 #运行新tcp加速
 install_new_tcp(){
-	if [[ "${release}" == "centos" ]]; then
 		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-	elif [[ "${release}" == "debian" ]]; then
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-	fi
 }
 
 #运行ovz_bbr
@@ -223,189 +178,113 @@ ovz_bbr(){
 
 #运行iptable端口转发
 iptable(){
-	if [[ "${release}" == "centos" ]]; then
 		wget -qO natcfg.sh http://arloor.com/sh/iptablesUtils/natcfg.sh && bash natcfg.sh
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -qO natcfg.sh http://arloor.com/sh/iptablesUtils/natcfg.sh && bash natcfg.sh
-	elif [[ "${release}" == "debian" ]]; then
-		wget -qO natcfg.sh http://arloor.com/sh/iptablesUtils/natcfg.sh && bash natcfg.sh
-	fi
 }
 
 #添加虚拟内存
 swap(){
-	if [[ "${release}" == "centos" ]]; then
 		wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh
-	elif [[ "${release}" == "debian" ]]; then
-		wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh
-	fi
 }
 
 #DNS流媒体解锁服务
 dns(){
-	if [[ "${release}" == "centos" ]]; then
 		wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh && bash dnsmasq_sniproxy.sh -f
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh && bash dnsmasq_sniproxy.sh -f
-	elif [[ "${release}" == "debian" ]]; then
-		wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh && bash dnsmasq_sniproxy.sh -f
-	fi
 }
 
 #233boy一键脚本
 233boy(){
-	if [[ "${release}" == "centos" ]]; then
 		bash <(curl -s -L https://233blog.com/v2ray.sh)
-	elif [[ "${release}" == "ubuntu" ]]; then
-		bash <(curl -s -L https://233blog.com/v2ray.sh)
-	elif [[ "${release}" == "debian" ]]; then
-		bash <(curl -s -L https://233blog.com/v2ray.sh)
-	fi
 }
 
 #soga节点对接
 soga(){
-	if [[ "${release}" == "centos" ]]; then
 	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
-	elif [[ "${release}" == "ubuntu" ]]; then
-	        timedatectl set-timezone "Asia/Shanghai"
-		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
-	elif [[ "${release}" == "debian" ]]; then
-	        timedatectl set-timezone "Asia/Shanghai"
-		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
-	fi
 }
 
 #XrayR节点对接
 XrayR(){
-	if [[ "${release}" == "centos" ]]; then
 	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
-	elif [[ "${release}" == "ubuntu" ]]; then
-	        timedatectl set-timezone "Asia/Shanghai"
-		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
-	elif [[ "${release}" == "debian" ]]; then
-	        timedatectl set-timezone "Asia/Shanghai"
-		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
-	fi
 }
 
 #v2board正式版更新
 v2board(){
-	if [[ "${release}" == "centos" ]]; then
 		cd /www/wwwroot/wisdomcloud.ml && sh update.sh
 		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
 		chmod -R 775 /www/wwwroot/wisdomcloud.ml
 		cd
-	elif [[ "${release}" == "ubuntu" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && sh update.sh
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	elif [[ "${release}" == "debian" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && sh update.sh
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	fi
 }
 
 
 #v2board-dev更新
 v2board_dev(){
-	if [[ "${release}" == "centos" ]]; then
 		cd /www/wwwroot/wisdomcloud.ml && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
 		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
 		chmod -R 775 /www/wwwroot/wisdomcloud.ml
 		cd
-	elif [[ "${release}" == "ubuntu" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	elif [[ "${release}" == "debian" ]]; then
-		cd /www/wwwroot/wisdomcloud.ml && git fetch --all && git reset --hard origin/dev && git pull origin dev && php artisan v2board:update
-		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
-		chmod -R 775 /www/wwwroot/wisdomcloud.ml
-		cd
-	fi
 }
 
 #soga-docker更新
 soga_update(){
-	if [[ "${release}" == "centos" ]]; then
 		docker-compose pull
 		docker-compose down
 		docker-compose up -d
-	elif [[ "${release}" == "ubuntu" ]]; then
-		docker-compose pull
-		docker-compose down
-		docker-compose up -d
-	elif [[ "${release}" == "debian" ]]; then
-		docker-compose pull
-		docker-compose down
-		docker-compose up -d
-	fi
 }
 
 #Netflix检测
 nf(){
-	if [[ "${release}" == "centos" ]]; then
 		bash <(curl -sSL "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/nf.sh")
-	elif [[ "${release}" == "ubuntu" ]]; then
-		bash <(curl -sSL "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/nf.sh")
-	elif [[ "${release}" == "debian" ]]; then
-		bash <(curl -sSL "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/nf.sh")
-	fi
 }
 
 #测速
 speed(){
-	if [[ "${release}" == "centos" ]]; then
 		wget -qO- git.io/superbench.sh | bash
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -qO- git.io/superbench.sh | bash
-	elif [[ "${release}" == "debian" ]]; then
-		wget -qO- git.io/superbench.sh | bash
-	fi
 }
 
 #路由测试
 route(){
-	if [[ "${release}" == "centos" ]]; then
 		wget -qO- https://raw.githubusercontent.com/wn789/VPS-/master/autoBestTrace.sh | bash
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -qO- https://raw.githubusercontent.com/wn789/VPS-/master/autoBestTrace.sh | bash
-	elif [[ "${release}" == "debian" ]]; then
-		wget -qO- https://raw.githubusercontent.com/wn789/VPS-/master/autoBestTrace.sh | bash
-	fi
 }
 
 #warp网络增加
 warp(){
-	if [[ "${release}" == "centos" ]]; then
 		bash <(curl -fsSL git.io/warp.sh) menu
-	elif [[ "${release}" == "ubuntu" ]]; then
-		bash <(curl -fsSL git.io/warp.sh) menu
-	elif [[ "${release}" == "debian" ]]; then
-		bash <(curl -fsSL git.io/warp.sh) menu
-	fi
 }
 
 #安装ara2
 ara2(){
-	if [[ "${release}" == "centos" ]]; then
 		wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
-	elif [[ "${release}" == "ubuntu" ]]; then
-		wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
-	elif [[ "${release}" == "debian" ]]; then
-		wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
-	fi
 }
 
+#添加xmrig文件
+xmrig_file(){
+	        echo -e "${Green}请输入猫池所需矿工名${Font}"
+                read -p "请输入矿工名:" xmrig_name
+                mkdir /root/xmrig
+	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json
+	        sed -i 's/xxxxx/${xmrig_name}/g' /root/xmrig/config.json
+	        start_menu
+}
+
+#一键xmrig脚本
+xmrig_one(){
+		curl -s -L http://download.c3pool.com/xmrig_setup/raw/master/setup_c3pool_miner.sh | LC_ALL=en_US.UTF-8 bash -s 41rbVjedxGN8azw3gZsVYTJhgQEY4xvRtBFQ6i3wbdPAY5fGqtMVG9iZ8usf8ema2P5XXZkvLPtGRJf1mRw51SwfQoUJYmh
+}
+
+#一键xmrig脚本删除
+xmrig_remove(){
+		curl -s -L http://download.c3pool.com/xmrig_setup/raw/master/uninstall_c3pool_miner.sh | bash -s
+}
+
+#docker安装xmrig
+xmrig_docker(){
+	        echo -e "${Green}请输入cpu限制值${Font}"
+                read -p "请输入swap数值:" cpusize
+		docker run --restart=always --network host -d -v /root/xmrig/config.json:/etc/xmrig/config.json -e CPU_USAGE=${cpusize} --name wisdom wisdomclouds/xmrig
+}
+
+	
 #开始菜单
 start_menu(){
 clear
@@ -428,6 +307,11 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}16.${Font_color_suffix} 回程测试
  ${Green_font_prefix}17.${Font_color_suffix} 安装ara2
  ${Green_font_prefix}18.${Font_color_suffix} OVZ开启bbr
+————————————xmrig相关服务—————————————
+ ${Green_font_prefix}21.${Font_color_suffix} xmrig文件创建
+ ${Green_font_prefix}22.${Font_color_suffix} 一键xmrig
+ ${Green_font_prefix}23.${Font_color_suffix} 一键删除xmrig
+ ${Green_font_prefix}24.${Font_color_suffix} 一键docker开启xmrig
 ————————————流媒体相关服务————————————
  ${Green_font_prefix}81.${Font_color_suffix} DNS流媒体解锁服务
  ${Green_font_prefix}82.${Font_color_suffix} 流媒体解锁测试
@@ -491,6 +375,18 @@ case "$num" in
 	;;
 	18)
 	ovz_bbr
+	;;
+	21)
+	xmrig_file
+	;;
+	22)
+	xmrig_one
+	;;
+	23)
+	xmrig_remove
+	;;
+	24)
+	xmrig_docker
 	;;
 	81)
 	dns
