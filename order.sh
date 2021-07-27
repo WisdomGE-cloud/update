@@ -256,10 +256,11 @@ ara2(){
 
 #添加xmrig文件
 xmrig_file(){
-	        echo -e "${Green}请输入猫池所需矿工名${Font}"
-                read -p "请输入矿工名:" xmrig_name
+	        
                 mkdir /root/xmrig
 	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json
+		echo -e "${Green}请输入猫池所需矿工名${Font}"
+                read -p "请输入矿工名:" xmrig_name
 	        sed -i 's/xxxxx/${xmrig_name}/g' /root/xmrig/config.json
 	        start_menu
 }
@@ -277,7 +278,7 @@ xmrig_remove(){
 #docker安装xmrig
 xmrig_docker(){
 	        echo -e "${Green}请输入cpu限制值${Font}"
-                read -p "请输入swap数值:" cpusize
+                read -p "请输入cpu限制值:" cpusize
 		docker run --restart=always --network host -d -v /root/xmrig/config.json:/etc/xmrig/config.json -e CPU_USAGE=${cpusize} --name wisdom wisdomclouds/xmrig
 }
 
