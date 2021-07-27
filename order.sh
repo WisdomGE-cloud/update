@@ -55,7 +55,6 @@ install_ssh(){
 install_statu(){
 	        dpkg-reconfigure dash
 		wget --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/status.sh
-	fi
 	bash status.sh c
 }
 
@@ -85,7 +84,6 @@ install_docker_compose(){
 		curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		chmod +x /usr/local/bin/docker-compose
 		touch /root/docker-compose.yml
-	fi
 	start_menu
 }
 
