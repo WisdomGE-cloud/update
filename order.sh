@@ -204,11 +204,19 @@ XrayR(){
 	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
 		wget -P /etc/XrayR -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.yml
+		echo -e "${Green_font_prefix}请输入节点编号${Font_color_suffix}"
+                read -p "请输入节点编号:" NodeID
+		sed -i "s/numberxxxxx/${NodeID}/g" /etc/XrayR/config.yml
+		echo -e "${Green_font_prefix}请输入域名${Font_color_suffix}"
+                read -p "请输入域名:" CertDomain
+		sed -i "s/domainxxxxx/${CertDomain}/g" /etc/XrayR/config.yml
+		XrayR start
 }
 
 #XrayR配置文件修改
 XrayR_doc(){
-	        echo -e "${Green_font_prefix}请输入节点编号${Font_color_suffix}"
+		wget -P /etc/XrayR -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.yml
+		echo -e "${Green_font_prefix}请输入节点编号${Font_color_suffix}"
                 read -p "请输入节点编号:" NodeID
 		sed -i "s/numberxxxxx/${NodeID}/g" /etc/XrayR/config.yml
 		echo -e "${Green_font_prefix}请输入域名${Font_color_suffix}"
