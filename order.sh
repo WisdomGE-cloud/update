@@ -258,7 +258,7 @@ ara2(){
 xmrig_file(){
 	        
                 mkdir /root/xmrig
-	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json
+	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json?token=AO2NJCWB235HGEJVAOVGGCTBDCASO
 		echo -e "${Green_font_prefix}请输入猫池所需矿工名${Font_color_suffix}"
                 read -p "请输入矿工名:" xmrigname
 	        sed -i "s/xxxxx/${xmrigname}/g" /root/xmrig/config.json
