@@ -203,7 +203,11 @@ soga(){
 XrayR(){
 	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
+		wget -P /etc/XrayR -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.yml?token=AO2NJCWHAEM4RGBJOHZMBRLBDCBOM
 }
+
+
+
 
 #v2board正式版更新
 v2board(){
