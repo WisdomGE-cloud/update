@@ -41,7 +41,7 @@ install_curl(){
 
 #安装ssh
 install_ssh(){
-		wget -P /root/.ssh -N https://github.com/WisdomGE-cloud/update/raw/main/authorized_keys
+		wget -P /root/.ssh -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/authorized_keys?token=AO2NJCXEXNTSDPEJD2VSOFTBDCAW6
 		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
 		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
 		sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
