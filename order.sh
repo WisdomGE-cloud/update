@@ -41,7 +41,7 @@ install_curl(){
 
 #安装ssh
 install_ssh(){
-		wget -P /root/.ssh -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/authorized_keys?token=AO2NJCXEXNTSDPEJD2VSOFTBDCAW6
+		wget -P /root/.ssh -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/authorized_keys
 		sed -i 's/#Port/Port/g' /etc/ssh/sshd_config
 		sed -i 's/Port 22/Port 17077/g' /etc/ssh/sshd_config
 		sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
@@ -203,7 +203,7 @@ soga(){
 XrayR(){
 	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
-		wget -P /etc/XrayR -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.yml?token=AO2NJCWHAEM4RGBJOHZMBRLBDCBOM
+		wget -P /etc/XrayR -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.yml
 }
 
 #XrayR配置文件修改
@@ -271,7 +271,7 @@ ara2(){
 xmrig_file(){
 	        
                 mkdir /root/xmrig
-	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json?token=AO2NJCWB235HGEJVAOVGGCTBDCASO
+	        wget -P /root/xmrig https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.json
 		echo -e "${Green_font_prefix}请输入猫池所需矿工名${Font_color_suffix}"
                 read -p "请输入矿工名:" xmrigname
 	        sed -i "s/xxxxx/${xmrigname}/g" /root/xmrig/config.json
