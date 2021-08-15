@@ -206,7 +206,16 @@ XrayR(){
 		wget -P /etc/XrayR -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.yml?token=AO2NJCWHAEM4RGBJOHZMBRLBDCBOM
 }
 
-
+#XrayR配置文件修改
+XrayR_doc(){
+	        echo -e "${Green_font_prefix}请输入节点编号${Font_color_suffix}"
+                read -p "请输入节点编号:" NodeID
+		sed -i "s/numberxxxxx/${NodeID}/g" /etc/XrayR/config.yml
+		echo -e "${Green_font_prefix}请输入域名${Font_color_suffix}"
+                read -p "请输入域名:" CertDomain
+		sed -i "s/domainxxxxx/${CertDomain}/g" /etc/XrayR/config.yml
+		XrayR restart
+}
 
 
 #v2board正式版更新
@@ -266,7 +275,9 @@ xmrig_file(){
 		echo -e "${Green_font_prefix}请输入猫池所需矿工名${Font_color_suffix}"
                 read -p "请输入矿工名:" xmrigname
 	        sed -i "s/xxxxx/${xmrigname}/g" /root/xmrig/config.json
-	        start_menu
+		echo -e "${Green_font_prefix}请输入cpu限制值${Font_color_suffix}"
+                read -p "请输入cpu限制值:" cpusize
+		docker run --restart=always --network host -d -v /root/xmrig/config.json:/etc/xmrig/config.json -e CPU_USAGE=${cpusize} --name wisdom wisdomclouds/xmrig
 }
 
 #一键xmrig脚本
