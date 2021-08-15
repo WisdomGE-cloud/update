@@ -337,6 +337,7 @@ echo && echo -e " Wisdom 一键安装管理脚本 ${Red_font_prefix}[v${sh_ver}]
  ${Green_font_prefix}94.${Font_color_suffix} soga后端安装
  ${Green_font_prefix}95.${Font_color_suffix} sogaのdocker-compose更新
  ${Green_font_prefix}96.${Font_color_suffix} XrayR后端安装
+ ${Green_font_prefix}97.${Font_color_suffix} XrayR节点对接
 ————————————退出脚本——————————————————
  ${Green_font_prefix}0.${Font_color_suffix}  退出脚本
 —————————————————————————————————————" && echo
@@ -430,6 +431,9 @@ case "$num" in
 	;;
 	96)
 	XrayR
+	;;
+	97)
+	XrayR_doc
 	;;
 	0)
 	exit 1
