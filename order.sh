@@ -210,7 +210,7 @@ XrayR_start(){
 		echo -e "${Green_font_prefix}请输入域名${Font_color_suffix}"
                 read -p "请输入域名:" CertDomain
 		sed -i "s/domainxxxxx/${CertDomain}/g" /etc/XrayR/config.yml
-		XrayR start
+		XrayR restart
 }
 
 #XrayR配置文件修改
