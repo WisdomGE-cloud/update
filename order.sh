@@ -10,7 +10,7 @@ Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
 #安装update
-update(){
+update_start(){
 	if [[ "${release}" == "centos" ]]; then
 		yum -y update
 		timedatectl set-timezone "Asia/Shanghai"
@@ -174,33 +174,33 @@ ovz_bbr(){
 }
 
 #运行iptable端口转发
-iptable(){
+iptable_start(){
 		wget -qO natcfg.sh http://arloor.com/sh/iptablesUtils/natcfg.sh && bash natcfg.sh
 }
 
 #添加虚拟内存
-swap(){
+swap_start(){
 		wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh
 }
 
 #DNS流媒体解锁服务
-dns(){
+dns_start(){
 		wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh && bash dnsmasq_sniproxy.sh -f
 }
 
 #233boy一键脚本
-233boy(){
+233boy_start(){
 		bash <(curl -s -L https://233blog.com/v2ray.sh)
 }
 
 #soga节点对接
-soga(){
+soga_start(){
 	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://blog.sprov.xyz/soga.sh)
 }
 
 #XrayR节点对接
-XrayR(){
+XrayR_start(){
 	        timedatectl set-timezone "Asia/Shanghai"
 		bash <(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)
 		wget -P /etc/XrayR -N https://raw.githubusercontent.com/WisdomGE-cloud/update/main/config.yml
@@ -227,7 +227,7 @@ XrayR_doc(){
 
 
 #v2board正式版更新
-v2board(){
+v2board_start(){
 		cd /www/wwwroot/wisdomcloud.ml && sh update.sh
 		cd /www/wwwroot/wisdomcloud.ml/public && wget -N --no-check-certificate "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/picture/favicon.ico"
 		chmod -R 775 /www/wwwroot/wisdomcloud.ml
@@ -251,27 +251,27 @@ soga_update(){
 }
 
 #Netflix检测
-nf(){
+nf_start(){
 		bash <(curl -sSL "https://raw.githubusercontent.com/WisdomGE-cloud/Upgrade-command-pack/master/nf.sh")
 }
 
 #测速
-speed(){
+speed_start(){
 		wget -qO- git.io/superbench.sh | bash
 }
 
 #路由测试
-route(){
+route_start(){
 		wget -qO- https://raw.githubusercontent.com/wn789/VPS-/master/autoBestTrace.sh | bash
 }
 
 #warp网络增加
-warp(){
+warp_start(){
 		bash <(curl -fsSL git.io/warp.sh) menu
 }
 
 #安装ara2
-ara2(){
+ara2_start(){
 		wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/aria2.sh && chmod +x aria2.sh && bash aria2.sh
 }
 
@@ -354,7 +354,7 @@ echo
 read -p " 请输入数字 :" num
 case "$num" in
 	1)
-	update
+	update_start
 	;;
 	2)
 	install_curl
@@ -381,19 +381,19 @@ case "$num" in
 	install_new_tcp
 	;;
 	13)
-	iptable
+	iptable_start
 	;;
 	14)
-	swap
+	swap_start
 	;;
 	15)
-	speed
+	speed_start
 	;;
 	16)
-	route
+	route_start
 	;;
 	17)
-	ara2
+	ara2_start
 	;;
 	18)
 	ovz_bbr
@@ -411,34 +411,34 @@ case "$num" in
 	xmrig_docker
 	;;
 	81)
-	dns
+	dns_start
 	;;
 	82)
-	nf
+	nf_start
 	;;
 	83)
 	install_wireguard
 	;;
 	84)
-	warp
+	warp_start
 	;;
 	91)
-	v2board
+	v2board_start
 	;;
 	92)
 	v2board_dev
 	;;
 	93)
-	233boy
+	233boy_start
 	;;
 	94)
-	soga
+	soga_start
 	;;
 	95)
 	soga_update
 	;;
 	96)
-	XrayR
+	XrayR_start
 	;;
 	97)
 	XrayR_doc
